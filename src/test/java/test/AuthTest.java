@@ -32,7 +32,7 @@ public class AuthTest {
         var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getRandomUser();
         loginPage.validLogin(authInfo);
-        loginPage.getErrorMessage();
+        loginPage.getErrorMessage("Ошибка! " + "Неверно указан логин или пароль");
     }
 
     @Test
@@ -41,7 +41,7 @@ public class AuthTest {
         var authInfo = new DataHelper.AuthInfo(DataHelper.getAuthInfo().getLogin(),
                 DataHelper.getRandomUser().getPassword());
         loginPage.validLogin(authInfo);
-        loginPage.getErrorMessage();
+        loginPage.getErrorMessage("Ошибка! " + "Неверно указан логин или пароль");
     }
 
     @Test
@@ -61,18 +61,18 @@ public class AuthTest {
         var authInfoFirst = new DataHelper.AuthInfo(DataHelper.getAuthInfo().getLogin(),
                 DataHelper.getRandomUser().getPassword());
         loginPage.validLogin(authInfoFirst);
-        loginPage.getErrorMessage();
+        loginPage.getErrorMessage("Ошибка! " + "Неверно указан логин или пароль");
         loginPage.cleanForm();
         clearBrowserCookies();
         var authInfoSecond = new DataHelper.AuthInfo(DataHelper.getAuthInfo().getLogin(),
                 DataHelper.getRandomUser().getPassword());
         loginPage.validLogin(authInfoSecond);
-        loginPage.getErrorMessage();
+        loginPage.getErrorMessage("Ошибка! " + "Неверно указан логин или пароль");
         loginPage.cleanForm();
         clearBrowserCookies();
         var authInfoThird = new DataHelper.AuthInfo(DataHelper.getAuthInfo().getLogin(),
                 DataHelper.getRandomUser().getPassword());
         loginPage.validLogin(authInfoThird);
-        loginPage.getUserBlock();
+        loginPage.getErrorMessage("Ошибка! " + "Пользователь заблокирован");
     }
 }

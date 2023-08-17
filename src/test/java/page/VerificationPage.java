@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class VerificationPage {
     private SelenideElement codeField = $("[data-test-id='code'] input");
     private SelenideElement verifyButton = $("[data-test-id='action-verify']");
-    private SelenideElement errorMessage = $("[data-test-id='error-notification']");
+    private SelenideElement errorMessage = $("[data-test-id='error-notification'] .notification__content");
 
     public void verify(String VerificationCode) {
         codeField.setValue(VerificationCode);
